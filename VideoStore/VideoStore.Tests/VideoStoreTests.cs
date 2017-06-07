@@ -14,6 +14,7 @@ namespace VideoStore.Tests
     {
         private IRentals rentals;       
         private VideoStore sut;
+        private Movie movie;
 
         [SetUp]
         public void SetUp()
