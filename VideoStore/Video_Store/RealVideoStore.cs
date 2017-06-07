@@ -5,14 +5,15 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace VideoStore
+namespace Video_Store
 {
-    public class VideoStore : IVideoStore
+    public class RealVideoStore : IVideoStore
     {
         private IRentals Rentals;
         private List<Customer> Customers;
         private Dictionary<string, List<Movie>> Movies;
-        public VideoStore(IRentals rentals)
+
+        public RealVideoStore(IRentals rentals)
         {
             Rentals = rentals;
             Customers = new List<Customer>();
@@ -21,6 +22,8 @@ namespace VideoStore
 
         public void AddMovie(Movie movie)
         {
+            if (string.IsNullOrEmpty(movie.Title))
+                throw new MovieException("Enter a movie name");
             if (movie != null && Movies.ContainsKey(movie.Title))
             {
                 if (Movies[movie.Title].Count(x => x.Title.Equals(movie.Title)) >= 3)
@@ -42,6 +45,8 @@ namespace VideoStore
 
         public void RegisterCustomer(string name, string socialSecurityNumber)
         {
+            if (string.IsNullOrEmpty(name))
+                throw new CustomerException("Name can't be empty");
             checkSsnFormat(socialSecurityNumber);
             if (Customers.Exists(x => x.Name.Equals(name) && x.Ssn.Equals(socialSecurityNumber)))
                 throw new CustomerException("Customer exists");
@@ -66,14 +71,18 @@ namespace VideoStore
 
             Rentals.AddRental(movieTitle, socialSecurityNumber);
         }
-
+        public List<Movie> GetMovies()
+        {
+            
+            return Movies.SelectMany(x => x.Value).ToList();
+        }
         public void ReturnMovie(string movieTitle, string socialSecurityNumber)
         {
             if (string.IsNullOrEmpty(movieTitle))
                 throw new MovieException("Movie title is empty");
             checkSsnFormat(socialSecurityNumber);
             if (!Rentals.GetRentalsFor(socialSecurityNumber).Any(x => x.Movie.Equals(movieTitle)))
-                throw new CustomerException("Need to be registered");
+                throw new RentalException("Need to be registered");
             if (!Movies.ContainsKey(movieTitle))
                 throw new MovieException("Movie doesn't exit");
 

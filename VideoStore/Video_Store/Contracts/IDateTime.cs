@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoStore
+namespace Video_Store
 {
     public interface IDateTime
     {

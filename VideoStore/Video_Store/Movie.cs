@@ -1,4 +1,4 @@
-﻿namespace VideoStore
+﻿namespace Video_Store
 {
     public class Movie
     {

@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD1F833C-E1FE-42AA-83F4-D01E30A83E0A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{19DBE76D-2E0D-4ECB-BAF0-5D0304F2B126}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Video_Store</RootNamespace>
-    <AssemblyName>Video_Store</AssemblyName>
+    <RootNamespace>VideoStore.UI</RootNamespace>
+    <AssemblyName>VideoStore.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,20 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="Exceptions\CustomerException.cs" />
-    <Compile Include="DateTime.cs" />
-    <Compile Include="Contracts\IDateTime.cs" />
-    <Compile Include="Contracts\IVideoStore.cs" />
-    <Compile Include="Contracts\IRentals.cs" />
-    <Compile Include="Movie.cs" />
-    <Compile Include="Exceptions\MovieException.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rental.cs" />
-    <Compile Include="Exceptions\RentalException.cs" />
-    <Compile Include="Rentals.cs" />
-    <Compile Include="Exceptions\SSNFormatException.cs" />
-    <Compile Include="RealVideoStore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Video_Store\Video_Store.csproj">
+      <Project>{dd1f833c-e1fe-42aa-83f4-d01e30a83e0a}</Project>
+      <Name>Video_Store</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

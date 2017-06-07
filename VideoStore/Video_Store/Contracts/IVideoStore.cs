@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Video_Store;
 
-namespace VideoStore
+namespace Video_Store
 {
     public interface IVideoStore
     {
@@ -13,5 +14,6 @@ namespace VideoStore
         void RentMovie(string movieTitle, string socialSecurityNumber);
         List<Customer> GetCustomers();
         void ReturnMovie(string movieTitle, string socialSecurityNumber);
+        List<Movie> GetMovies();
     }
 }

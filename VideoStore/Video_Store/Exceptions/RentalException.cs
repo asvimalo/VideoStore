@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace VideoStore
+namespace Video_Store
 {
     [Serializable]
-    internal class RentalException : Exception
+    public class RentalException : Exception
     {
         private List<Rental> tooLateRented;
 

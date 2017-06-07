@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace VideoStore
+namespace Video_Store
 {
     [Serializable]
-    internal class SSNFormatException : Exception
+    public class SSNFormatException : Exception
     {
         public SSNFormatException()
         {

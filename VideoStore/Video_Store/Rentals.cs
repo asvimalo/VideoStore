@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VideoStore
+namespace Video_Store
 {
     public class Rentals : IRentals
     {
@@ -23,7 +23,7 @@ namespace VideoStore
             if (GetRentalsFor(socialSecurityNumber).Exists(x => x.Movie == movieTitle))
                 throw new RentalException("You have in your possession  this movie");
 
-            var rental = new Rental { Customer = socialSecurityNumber, Movie = movieTitle };
+            var rental = new Rental { Customer = socialSecurityNumber, Movie = movieTitle, DayRented = date.Now() };
             rented.Add(rental);
         }
 

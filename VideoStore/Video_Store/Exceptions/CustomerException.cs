@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace VideoStore
+namespace Video_Store
 {
     [Serializable]
-    internal class CustomerException : Exception
+    public class CustomerException : Exception
     {
         public CustomerException()
         {
